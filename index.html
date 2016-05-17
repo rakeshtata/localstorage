@@ -1,0 +1,144 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <title>Example Backbone App</title>
+  <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" media="all" rel="stylesheet" type="text/css" />
+  <style>
+    .tm {
+      margin-top: 80px
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8" id="primary-content">
+      </div>
+
+    </div>
+  </div>
+
+
+  <script type="text/jst" id="formTemplate">
+    <div class="well tm">
+      <div class="alert alert-danger fade in" style="display:none;"></div>
+      <form>
+
+        <div class="form-group">
+          <label>First Name:</label>
+          <input type="text" class="form-control" required="required" id="firstName" value="<%= firstName %>" />
+        </div>
+        <div class="form-group">
+          <label>Last Name:</label>
+          <input type="text" class="form-control" required="required" id="lastName" value="<%= lastName %>" />
+        </div>
+        <button class="next btn btn-large btn-info">Next</button>
+        <div id="addressBlock" style="display: none;margin-top:10px">
+
+
+          <div class="form-group">
+            <label>Address One:</label>
+            <input class="form-control" required="required" rows="5" id="addressOne">
+            <%= addressOne %>
+              </input>
+          </div>
+          <div class="form-group">
+            <label>Address Two:</label>
+            <input class="form-control" rows="5" id="addressTwo">
+            <%= addressTwo %>
+              </input>
+          </div>
+          <div class="form-group">
+            <label>City:</label>
+            <input class="form-control" rows="5" id="city">
+            <%= city %>
+              </input>
+          </div>
+          <div class="form-group">
+            <label>State:</label>
+            <input class="form-control" rows="5" id="state">
+            <%= state %>
+              </input>
+          </div>
+          <div class="form-group">
+            <label>ZipCode:</label>
+            <input class="form-control" rows="5" id="zipCode">
+            <%= zipCode %>
+              </input>
+          </div>
+
+          <button class="save btn btn-large btn-info" type="submit">Finish</button>
+      </form>
+      </div>
+    </div>
+  </script>
+
+  <!-- the index container -->
+  <script type="text/template" id="indexTemplate">
+    <div class="well tm">
+      <a class="btn btn-block btn-large btn-info" href="#index">Add More</a>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Address One</th>
+                <th>Address Two</th>
+                <th>City</th>
+                <th>State</th>
+                <th>Zip Code</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% _.each(addresses, function (address) { %>
+
+                <tr>
+                  <td>
+                    <%= address.firstName %>
+                  </td>
+                  <td>
+                    <%= address.lastName %>
+                  </td>
+                  <td>
+                    <%= address.addressOne %>
+                  </td>
+                  <td>
+                    <%= address.addressTwo %>
+                  </td>
+                  <td>
+                    <%= address.city %>
+                  </td>
+                  <td>
+                    <%= address.state %>
+                  </td>
+                  <td>
+                    <%= address.zipCode %>
+                  </td>
+                </tr>
+                <% }); %>
+            </tbody>
+          </table>
+    </div>
+  </script>
+
+  <!-- load the libraries we need -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.2.3/backbone-min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/backbone-localstorage.js/1.1.16/backbone.localStorage-min.js"></script>
+  <!-- load our scripts -->
+  <script src="js/router.js"></script>
+  <script src="js/model.js"></script>
+  <script src="js/views/index.js"></script>
+  <script src="js/views/list.js"></script>
+  <script src="js/helpers.js"></script>
+  <script>
+    var app = new APP.NoteRouter();
+  </script>
+
+
+</body>
+
+</html>
